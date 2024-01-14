@@ -340,7 +340,7 @@ class FormField(models.Model):
 
     def get_choices(self):
         def get_tuple(value):
-            return (slugify(value.strip()), value.strip())
+            return (slugify(value.strip(), allow_unicode=True), value.strip())
 
         choices = [get_tuple(value) for value in self.choices.split(",")]
         if not self.is_required and self.type == "select":
